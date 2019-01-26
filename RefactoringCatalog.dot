@@ -1,55 +1,49 @@
 digraph Refactoring2ndEdition {
     graph [
         charset="UTF-8";
-        //layout=neato
-        //layout=circo
-        layout=fdp
-        //layout=twopi
+        //layout=neato; overlap = false; splines = true;
+        //layout=circo;
+        //layout=fdp; overlap = false;
+        layout=twopi; overlap = false;
+        //layout=dot; rankdir=LR;
     ];
 
     node [
         shape="note",
         style="filled",
-        fillcolor="pink"
+        fillcolor="red",
     ];
-
-    newrank=true;
 
     /* -------------------- */
     /* 1st Edition / Japanese */
     subgraph cluster_1 {
         label="1st Edition";
 
-    // 第6章
-    subgraph cluster_1_6 {
-        label="1st Chapter 6";
+        // 第6章 : メソッドの構成
         // P.110 replaced -> Extract Function
-        ExtractMethod [label="Extract Method\nメソッドの抽出(110)", fillcolor="gray", pos="0,0!"];
+        ExtractMethod [label="Extract Method\nメソッドの抽出(110)", fillcolor="gray"];
         // P.117 replaced -> Inline Function
-        InlineMethod [label="Inline Method\nメソッドのインライン化(117)", fillcolor="gray", pos="0,-1!"];
+        InlineMethod [label="Inline Method\nメソッドのインライン化(117)", fillcolor="gray"];
         // P.119 replaced -> Inline Variable
-        InlineTemp [label="Inline Temp\n一時変数のインライン化(119)", fillcolor="gray", pos="0,-2!"];
+        InlineTemp [label="Inline Temp\n一時変数のインライン化(119)", fillcolor="gray"];
         // P.120 kept
         // ReplaceTempwithQuery;
         // P.124 kept
         // Extract Variable;
-        IntroduceExplaningVariable [label="Introduce Explaning Variable\n説明用変数の導入(124)", fillcolor="gray", pos="0,-3!"];
+        IntroduceExplaningVariable [label="Introduce Explaning Variable\n説明用変数の導入(124)", fillcolor="gray"];
         // P.128 replaced -> Split Variable
         // SplitTemporaryVariable;
-        SplitTemp [label="Split Temp\n一時変数の分離(128)", fillcolor="gray", pos="0,-4!"]
+        SplitTemp [label="Split Temp\n一時変数の分離(128)", fillcolor="gray"]
         // P.131 replaced -> Split Variable
-        RemoveAssignmentstoParameters [label="Remove Assignments to Parameters\nパラメータへの代入の除去(131)", fillcolor="gray", pos="0,-5!"];
+        RemoveAssignmentstoParameters [label="Remove Assignments to Parameters\nパラメータへの代入の除去(131)", fillcolor="gray"];
         // P.135
-        ReplaceMethodwithMethodObject [label="Replace Method with Method Object\nメソッドオブジェクトによるメソッドの置き換え", fillcolor="gray", pos="0,-6!"];
+        ReplaceMethodwithMethodObject [label="Replace Method with Method Object\nメソッドオブジェクトによるメソッドの置き換え", fillcolor="gray"];
         // P.139
         // SubstituteAlgorithm;
-    }
 
-    // 第7章
-    subgraph cluster_1_7 {
-        label="1st Chapter 7";
+        // 第7章 : オブジェクト間での特性の移動
         // P.142
-        MoveMethod [label="Move Method\nメソッドの移動(142)", fillcolor="gray", pos="0,-1!"];
+        MoveMethod [label="Move Method\nメソッドの移動(142)", fillcolor="gray"];
         // P.146
         // MoveField;
         // P.149
@@ -61,109 +55,97 @@ digraph Refactoring2ndEdition {
         // P.160
         // RemoveMiddleMan;
         // P.162
-        IntroduceForeignMethod [label="Introduce Foreign Method\n外部メソッドの導入(162)", fillcolor="gray", pos="0,-2!"];
+        IntroduceForeignMethod [label="Introduce Foreign Method\n外部メソッドの導入(162)", fillcolor="gray"];
         // P.164
-        IntroduceLocalExtension [label="Introduce Local Extension\n局所的拡張の導入(164)", fillcolor="gray", pos="0,-3!"];
-    }
+        IntroduceLocalExtension [label="Introduce Local Extension\n局所的拡張の導入(164)", fillcolor="gray"];
 
-    // 第8章 : データの再編成
-    subgraph cluster_1_8 {
-        label="1st Chapter 8";
+        // 第8章 : データの再編成
         // P.171
-        SelfEncapsulateField [label="Self-Encapsulate Field\n自己カプセル化フィールド(171)", fillcolor="gray", pos="0,-1!"];
+        SelfEncapsulateField [label="Self-Encapsulate Field\n自己カプセル化フィールド(171)", fillcolor="gray"];
         // P.175
-        ReplaceDataValuewithObject [label="Replace Data Value with Object\nオブジェクトによるデータ値の置き換え(175)", fillcolor="gray", pos="0,-2!"];
+        ReplaceDataValuewithObject [label="Replace Data Value with Object\nオブジェクトによるデータ値の置き換え(175)", fillcolor="gray"];
         // P.179
         // ChangeValuetoReference;
         // P.183
         // ChangeReferencetoValue;
         // P.186
-        ReplaceArraywithObject [label="Replace Array with Object\nオブジェクトによる配列の置き換え(186)", fillcolor="gray", pos="0,-3!"];
+        ReplaceArraywithObject [label="Replace Array with Object\nオブジェクトによる配列の置き換え(186)", fillcolor="gray"];
         // P.189
-        DuplicateObservedData [label="Duplicate Observed Data\n観察されるデータの複製(189)", fillcolor="gray", pos="0,-4!"];
+        DuplicateObservedData [label="Duplicate Observed Data\n観察されるデータの複製(189)", fillcolor="gray"];
         // P.197
-        ChangeUnidirectionalAssociationtoBidirectional [label="Change Unidirectional Association to Bidirectional\n単方向関連の双方向への変更(197)", fillcolor="gray", pos="0,-5!"];
+        ChangeUnidirectionalAssociationtoBidirectional [label="Change Unidirectional Association to Bidirectional\n単方向関連の双方向への変更(197)", fillcolor="gray"];
         ChangeUnidirectionalAssociationtoBidirectional -> ChangeBidirectionalAssociationtoUnidirectional [label="inverse of", color="blue"];
         // P.200
-        ChangeBidirectionalAssociationtoUnidirectional [label="Change Bidirectional Association to Unidirectional\n双方向関連の単方向への変更(200)", fillcolor="gray", pos="0,-6!"];
+        ChangeBidirectionalAssociationtoUnidirectional [label="Change Bidirectional Association to Unidirectional\n双方向関連の単方向への変更(200)", fillcolor="gray"];
         ChangeBidirectionalAssociationtoUnidirectional -> ChangeUnidirectionalAssociationtoBidirectional [label="inverse of", color="blue"];
         // P.204
-        ReplaceMagicNumberwithSymbolicConstant [label="Replace Magic Number with Symbolic Constant\nシンボリック定数によるマジックナンバーの置き換え(204)", fillcolor="gray", pos="0,-7!"];
+        ReplaceMagicNumberwithSymbolicConstant [label="Replace Magic Number with Symbolic Constant\nシンボリック定数によるマジックナンバーの置き換え(204)", fillcolor="gray"];
         // P.206
-        EncapsulateField [label="Encapsulate Field\nフィールドのカプセル化(206)", fillcolor="gray", pos="0,-8!"];
+        EncapsulateField [label="Encapsulate Field\nフィールドのカプセル化(206)", fillcolor="gray"];
         // P.208
         // EncapsulateCollection;
         // P.217
-        ReplaceRecordwithDataClass [label="Replace Record with Data Class\nデータクラスによるレコードの置き換え(217)", fillcolor="gray", pos="0,-9!"];
+        ReplaceRecordwithDataClass [label="Replace Record with Data Class\nデータクラスによるレコードの置き換え(217)", fillcolor="gray"];
         // P.218
-        ReplaceTypeCodewithClass [label="Replace Type Code with Class\nクラスによるタイプコードの置き換え(218)", fillcolor="gray", pos="0,-10!"];
+        ReplaceTypeCodewithClass [label="Replace Type Code with Class\nクラスによるタイプコードの置き換え(218)", fillcolor="gray"];
         // P.223
         //ReplaceTypeCodewithSubclasses;
         // P.227
-        ReplaceTypeCodewithStateStrategy [label="Replace Type Code with State/Strategy\nState/Strategyによるタイプコードの置き換え(227)", fillcolor="gray", pos="0,-11!"];
+        ReplaceTypeCodewithStateStrategy [label="Replace Type Code with State/Strategy\nState/Strategyによるタイプコードの置き換え(227)", fillcolor="gray"];
         // P.232
-        ReplaceSubclasswithFields [label="Replace Subclass with Fields\nフィールドによるサブクラスの置き換え(232)", fillcolor="gray", pos="0,-12!"];
-    }
+        ReplaceSubclasswithFields [label="Replace Subclass with Fields\nフィールドによるサブクラスの置き換え(232)", fillcolor="gray"];
 
-    // 第9章 : 条件記述の単純化
-    subgraph cluster_1_9 {
-        label="1st Chapter 9";
+        // 第9章 : 条件記述の単純化
         // P.238
         // DecomposeConditional;
         // P.240
         // ConsolidateConditionalExpression;
         // P.243
-        ConsolidateDuplicateConditionalFragments [label="Consolidate Duplicate Conditional Fragments\n重複した条件記述の断片の統合(243)", fillcolor="gray", pos="0,-1!"];
+        ConsolidateDuplicateConditionalFragments [label="Consolidate Duplicate Conditional Fragments\n重複した条件記述の断片の統合(243)", fillcolor="gray"];
         // P.245
-        RemoveControlFlag [label="Remove Control Flag\n制御フラグの削除(245)", fillcolor="gray", pos="0,-2!"];
+        RemoveControlFlag [label="Remove Control Flag\n制御フラグの削除(245)", fillcolor="gray"];
         // P.250
         // ReplaceNestedConditionalwithGuardClauses;
         // P.255
         // ReplaceConditionalwithPolymorphism;
         // P.260
-        IntroduceNullObject [label="Introduce Null Object\nヌルオブジェクトの導入(260)", fillcolor="gray", pos="0,-3!"];
+        IntroduceNullObject [label="Introduce Null Object\nヌルオブジェクトの導入(260)", fillcolor="gray"];
         // P.267
         // IntroduceAssertion;
-    }
 
-    // 第10章 : メソッド呼び出しの単純化
-    subgraph cluster_1_10 {
-        label="1st Chapter 10";
+        // 第10章 : メソッド呼び出しの単純化
         // P.273
-        RenameMethod [label="Rename Method\nメソッド名の変更(273)", fillcolor="gray", pos="0,-1!"];
+        RenameMethod [label="Rename Method\nメソッド名の変更(273)", fillcolor="gray"];
         // P.275
-        AddParameter [label="Add Parameter\nパラメータの追加(275)", fillcolor="gray", pos="0,-2!"];
+        AddParameter [label="Add Parameter\nパラメータの追加(275)", fillcolor="gray"];
         // P.277
-        RemoveParameter [label="Remove Paramter\nパラメータの削除(277)", fillcolor="gray", pos="0,-3!"];
+        RemoveParameter [label="Remove Paramter\nパラメータの削除(277)", fillcolor="gray"];
         // P.279
         // SeparateQueryfromModifier;
         // P.283
-        ParameterizeMethod [label="Parameterize Method\nメソッドのパラメタライズ(283)", fillcolor="gray", pos="0,-4!"];
+        ParameterizeMethod [label="Parameterize Method\nメソッドのパラメタライズ(283)", fillcolor="gray"];
         // P.285
-        ReplaceParameterwithExplicitMethods [label="Replace Parameter with Explicit Methods\n明示的なメソッド群によるパラメータの置き換え(285)", fillcolor="gray", pos="0,-5!"];
+        ReplaceParameterwithExplicitMethods [label="Replace Parameter with Explicit Methods\n明示的なメソッド群によるパラメータの置き換え(285)", fillcolor="gray"];
         // P.288
         // PreserveWholeObject;
         // P.292
-        ReplaceParameterwithMethod [label="Replace Parameter with Method\nメソッドによるパラメータの置き換え(292)", fillcolor="gray", pos="0,-6!"];
+        ReplaceParameterwithMethod [label="Replace Parameter with Method\nメソッドによるパラメータの置き換え(292)", fillcolor="gray"];
         // P.295
         // IntroduceParameterObject;
         // P.300
         // RemoveSettingMethod;
         // P.303
-        HideMethod [label="Hide Method\nメソッドの隠蔽(303)", fillcolor="gray", pos="0,-7!"];
+        HideMethod [label="Hide Method\nメソッドの隠蔽(303)", fillcolor="gray"];
         // P.304
-        ReplaceConstructorwithFactoryMethod [label="Replace Constructor with Factory Method\nFactory Methodによるコンストラクタの置き換え(304)", fillcolor="gray", pos="0,-8!"];
+        ReplaceConstructorwithFactoryMethod [label="Replace Constructor with Factory Method\nFactory Methodによるコンストラクタの置き換え(304)", fillcolor="gray"];
         // P.308
-        EncapsulateDowncast [label="Encapsulate Downcast\nダウンキャストのカプセル化(308)", fillcolor="gray", pos="0,-9!"];
+        EncapsulateDowncast [label="Encapsulate Downcast\nダウンキャストのカプセル化(308)", fillcolor="gray"];
         // P.310
-        ReplaceErrorCodewithException [label="Replace Error Code with Exception\n例外によるエラーコードの置き換え(310)", fillcolor="gray", pos="0,-10!"];
+        ReplaceErrorCodewithException [label="Replace Error Code with Exception\n例外によるエラーコードの置き換え(310)", fillcolor="gray"];
         // P.315
-        ReplaceExceptionwithTest [label="Replace Exception with Test\n条件判定による例外の置き換え(315)", fillcolor="gray", pos="0,-11!"];
-    }
+        ReplaceExceptionwithTest [label="Replace Exception with Test\n条件判定による例外の置き換え(315)", fillcolor="gray"];
 
-    // 第11章 : 継承の取り扱い
-    subgraph cluster_1_11 {
-        label="1st Chapter 11";
+        // 第11章 : 継承の取り扱い
         // P.320
         // PullUpField;
         // P.322
@@ -188,20 +170,16 @@ digraph Refactoring2ndEdition {
         ReplaceInheritancewithDelegation [label="Replace Inheritance with Delegation\n委譲による継承の置き換え(352)", fillcolor="gray", pos="5,-5!"];
         // P.355
         ReplaceDelegationwithInheritance [label="Replace Delegation with Inheritance\n継承による委譲の置き換え(355)", fillcolor="gray", pos="5,-6!"];
-    }
 
-    // 第12章 : 大きなリファクタリング
-    subgraph cluster_1_12 {
-        label="1st Chapter 12";
+        // 第12章 : 大きなリファクタリング
         // P.362
-        TeaseApartInheritance [label="Tease Apart Inheritance\n継承の切り離し", fillcolor="gray", pos="0,-1!"];
+        TeaseApartInheritance [label="Tease Apart Inheritance\n継承の切り離し", fillcolor="gray"];
         // P.368
-        ConvertProceduralDesigntoObjects [label="Convert Procedural Design to Objects\n手続き的な設計からオブジェクト指向への変換(368)", fillcolor="gray", pos="0,-2!"];
+        ConvertProceduralDesigntoObjects [label="Convert Procedural Design to Objects\n手続き的な設計からオブジェクト指向への変換(368)", fillcolor="gray"];
         // P.370
-        SeparateDomainfromPresentation [label="Separate Domain from Presentation\nプレゼンテーションとドメインの分離(370)", fillcolor="gray", pos="0,-3!"];
+        SeparateDomainfromPresentation [label="Separate Domain from Presentation\nプレゼンテーションとドメインの分離(370)", fillcolor="gray"];
         // P.375
-        ExtractHierarchy [label="Extract Hierarchy\n階層の抽出(375)", fillcolor="gray", pos="0,-4!"];
-    }
+        ExtractHierarchy [label="Extract Hierarchy\n階層の抽出(375)", fillcolor="gray"];
 
     } // 1st end
 
@@ -216,6 +194,35 @@ digraph Refactoring2ndEdition {
     subgraph cluster_2 {
         label="2nd Edition";
 
+    // 2nd Bad Smell
+    // 2nd P.83
+    AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="pink"];
+    // 2nd P.87
+    Comments[label="Comments(84)\nコメント(87)", fillcolor="pink"];
+    // 2nd P.86
+    DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="pink"];
+    DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="pink"];
+    DivergentChange[label="Divergent Change(76)"];
+    DuplicatedCode[label="Duplicated Code(72)"];
+    FeatureEnvy;
+    GlobalData;
+    InsiderTrading;
+    LargeClass;
+    LazyElement;
+    LongFunction;
+    LongParameterList;
+    Loops[label="Loops(79)"];
+    MessageChains;
+    MiddleMan;
+    MutableData;
+    MysteriousName;
+    PrimitiveObsession;
+    RefusedBequest;
+    RepeatedSwitches;
+    ShotgunSurgery;
+    SpeculativeGenerality;
+    TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="pink"];
+
     // 2nd Chapter 6 : A First Set of Refactorings
     subgraph cluster_2_6 {
         label="2nd Chapter 6";
@@ -229,8 +236,8 @@ digraph Refactoring2ndEdition {
         InlineVariable [label="Inline Variable(123)\n変数のインライン化", fillcolor="skyblue", pos="0,-4!"];
         // 2nd P.124
         ChangeFunctionDeclaration [label="Change Function Declaration(124)\n関数宣言の変更", URL="https://refactoring.com/catalog/changeFunctionDeclaration.html", fillcolor="skyblue", pos="0,-5!"];
-        RenameFunction [label="Rename Function\n関数名の変更", pos="3,-5!"];
-        ChangeSignature [label="Change Signature\nシグネチャーの変更", pos="3,-6!"];
+        RenameFunction [label="Rename Function\n関数名の変更", fillcolor="cyan", pos="3,-5!"];
+        ChangeSignature [label="Change Signature\nシグネチャーの変更", fillcolor="cyan", pos="3,-6!"];
         // 2nd P.132
         EncapsulateVariable [label="Encapsulate Variable(132)\n変数のカプセル化", fillcolor="skyblue", pos="0,-6!"];
         // 2nd P.137
@@ -382,6 +389,79 @@ digraph Refactoring2ndEdition {
     }   // 2nd end
 
     // 関連
+
+    // 2nd P.83
+    AlternativeClasswithDifferentInterfaces -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    AlternativeClasswithDifferentInterfaces -> MoveFunction[label="refactoring", color="darkgreen"];
+    AlternativeClasswithDifferentInterfaces -> ExtractSuperclass[label="refactoring", color="darkgreen"];
+    DataClass -> EncapsulateRecord;
+    DataClass -> RemoveSettingMethod;
+    DataClass -> MoveFunction;
+    DataClass -> ExtractFunction;
+    DataClass -> SplitPhase;
+
+    // 2nd P.84
+    Comments -> ExtractFunction[label="refactoring", color="darkgreen"];
+    Comments -> ChangeFunctionDeclaration;
+    Comments -> IntroduceAssertion;
+
+    // 2nd P.78
+    DataClumps -> ExtractClass;
+    DataClumps -> IntroduceParameterObject;
+    DataClumps -> PreserveWholeObject;
+
+    // 2nd P.76
+    DivergentChange -> SplitPhase;
+    DivergentChange -> MoveFunction;
+    DivergentChange -> ExtractFunction;
+    DivergentChange -> ExtractClass;
+
+    // 2nd P.72
+    DuplicatedCode -> ExtractFunction;
+    DuplicatedCode -> SlideStatements;
+    DuplicatedCode -> PullUpMethod;
+
+    // 2nd P.77
+    FeatureEnvy -> MoveFunction;
+    FeatureEnvy -> ExtractFunction;
+
+    // 2nd P.74
+    GlobalData -> EncapsulateVariable;
+
+    // 2nd P.82
+    InsiderTrading -> MoveFunction;
+    InsiderTrading -> MoveField;
+    InsiderTrading -> HideDelegate;
+    InsiderTrading -> ReplaceSubclasswithDelegate;
+    InsiderTrading -> ReplaceSuperclasswithDelegate;
+
+    // 2nd P.82
+    LargeClass -> ExtractClass;
+    LargeClass -> ExtractSuperclass;
+    LargeClass -> ReplaceTypeCodewithSubclasses;
+
+    // 2nd P.80
+    LazyElement -> InlineFunction;
+    LazyElement -> InlineClass;
+    LazyElement -> CollapseHierarchy;
+
+    // 2nd P.73
+    LongFunction -> ExtractFunction;
+    LongFunction -> ReplaceTempwithQuery;
+    LongFunction -> IntroduceParameterObject;
+    LongFunction -> PreserveWholeObject;
+    LongFunction -> ReplaceFunctionwithCommand;
+    LongFunction -> DecomposeConditional;
+    LongFunction -> ReplaceConditionalwithPolymorphism;
+    LongFunction -> SplitLoop;
+
+    //
+    
+    // 2nd P.80
+    TemporaryField -> ExtractClass [label="refactoring", color="darkgreen"];
+    TemporaryField -> MoveFunction [label="refactoring", color="darkgreen"];
+    TemporaryField -> IntroduceSpecialCase [label="refactoring", color="darkgreen"];
+
     // 2nd P.106
     ExtractFunction -> ExtractMethod [label="formerly", color="gray"];
     ExtractFunction -> InlineFunction [label="inverse of", color="blue"];
@@ -394,11 +474,11 @@ digraph Refactoring2ndEdition {
     InlineVariable -> InlineTemp [label="formerly", color="gray"];
     InlineVariable -> ExtractVariable [label="inverse of", color="blue"];
     // 2nd P.124
-    ChangeFunctionDeclaration -> RenameFunction[label="aka\n別名", color="red"];
+    ChangeFunctionDeclaration -> RenameFunction[label="aka\n別名", color="cyan"];
     ChangeFunctionDeclaration -> RenameMethod[label="formerly", color="gray"];
     ChangeFunctionDeclaration -> AddParameter[label="formerly", color="gray"];
     ChangeFunctionDeclaration -> RemoveParameter[label="formerly", color="gray"];
-    ChangeFunctionDeclaration -> ChangeSignature[label="aka\n別名", color="red"];
+    ChangeFunctionDeclaration -> ChangeSignature[label="aka\n別名", color="cyan"];
     // 2nd P.132
     EncapsulateVariable -> SelfEncapsulateField [label="formerly", color="gray"];
     EncapsulateVariable -> EncapsulateField [label="formerly", color="gray"];
