@@ -3,21 +3,62 @@ digraph Refactoring2ndEdition {
         charset="UTF-8";
         //layout=neato; overlap = false; splines = true;
         //layout=circo;
-        //layout=fdp; overlap = false;
-        layout=twopi; overlap = false;
+        //layout=fdp;
+        layout=twopi; overlap = false; splines = true;
         //layout=dot; rankdir=LR;
     ];
 
     node [
         shape="note",
         style="filled",
-        fillcolor="red",
+        fillcolor="red"
     ];
 
     /* -------------------- */
     /* 1st Edition / Japanese */
-    subgraph cluster_1 {
-        label="1st Edition";
+    subgraph cluster_1Smell {
+        label="1st Edition Code Smells";
+        // 第3章 : コードの不吉な臭い
+        // P.76
+        // DuplicatedCode;
+        LongMethod[label="Long Method\n長すぎるメソッド(76)", fillcolor="lightgrey"];
+        // P.78
+        // LargeClass;
+        // LongParameterList;
+        // P.79
+        // DivergentChange;
+        // P.80
+        // ShotgunSurgery;
+        // FeatureEnvy;
+        // P.81
+        // DataClumps;
+        // PrimitiveObsession;
+        // P.82
+        SwitchStatement[label="Switch Statement\nスイッチ文(82)", fillcolor="lightgrey"];
+        // P.83
+        ParallelInheritanceHierarchies[label="Parallel Inheritance Hierarchies\nパラレル継承(83)", fillcolor="lightgrey"];
+        LazyClass[label="Lazy Class\n怠け者クラス(83)", fillcolor="lightgrey"];
+        // SpeculativeGenerality;
+        //P.84
+        // TemporaryField;
+        // MessageChains;
+        // P.85
+        // MiddleMan;
+        InappropriateIntimacy[label="Inappropriate Intimacy\n不適切な関係(85)", fillcolor="lightgrey"];
+        // AlternativeClasswithDifferentInterfaces;
+        // P.86
+        IncompleteLibraryClass[label="Incomplete Library Class\n未熟なクラスライブラリ(86)", fillcolor="lightgrey"];
+        // DataClass;
+        // P.87
+        // RefusedBequest;
+        // Comments;
+    }
+
+    LongFunction -> LongMethod[label="formerly" color="grey"];
+    LazyElement -> LazyClass[label="formerly" color="grey"];
+
+    subgraph cluster_1Catalog {
+        label="1st Edition Refactoring Catalog";
 
         // 第6章 : メソッドの構成
         // P.110 replaced -> Extract Function
@@ -157,19 +198,19 @@ digraph Refactoring2ndEdition {
         // P.329
         // PushDownField;
         // P.330
-        ExtractSubclass [label="Extract Subclass\nサブクラスの抽出(330)", fillcolor="gray", pos="5,-1!"];
+        ExtractSubclass [label="Extract Subclass\nサブクラスの抽出(330)", fillcolor="gray"];
         // P.336
-        ExtractSuperclass [label="Extract Superclass\nスーパークラスの抽出(336)", fillcolor="gray", pos="5,-2!"];
+        ExtractSuperclass [label="Extract Superclass\nスーパークラスの抽出(336)", fillcolor="gray"];
         // P.341
-        ExtractInterface [label="Extract Interface\nインタフェースの抽出(341)", fillcolor="gray", pos="5,-3!"];
+        ExtractInterface [label="Extract Interface\nインタフェースの抽出(341)", fillcolor="gray"];
         // P.344
         // CollapseHierarchy;
         // P.345
-        FormTemplateMethod [label="Form Template Method\nTemplate Methodの形成(345)", fillcolor="gray", pos="5,-4!"];
+        FormTemplateMethod [label="Form Template Method\nTemplate Methodの形成(345)", fillcolor="gray"];
         // P.352
-        ReplaceInheritancewithDelegation [label="Replace Inheritance with Delegation\n委譲による継承の置き換え(352)", fillcolor="gray", pos="5,-5!"];
+        ReplaceInheritancewithDelegation [label="Replace Inheritance with Delegation\n委譲による継承の置き換え(352)", fillcolor="gray"];
         // P.355
-        ReplaceDelegationwithInheritance [label="Replace Delegation with Inheritance\n継承による委譲の置き換え(355)", fillcolor="gray", pos="5,-6!"];
+        ReplaceDelegationwithInheritance [label="Replace Delegation with Inheritance\n継承による委譲の置き換え(355)", fillcolor="gray"];
 
         // 第12章 : 大きなリファクタリング
         // P.362
@@ -191,152 +232,147 @@ digraph Refactoring2ndEdition {
 
     /* -------------------- */
     /* 2nd Edition */
-    subgraph cluster_2 {
-        label="2nd Edition";
+    subgraph cluster_2Smell {
+        label="2nd Edition Bad Smells";
+        // 2nd Bad Smell
+        // 2nd P.72
+        MysteriousName[label="Mysterious Name(72)\nミステリアスな名前", fillcolor="pink"];
+        DuplicatedCode[label="Duplicated Code(72)\n重複したコード(76)", fillcolor="orange"];
+        // 2nd P.73
+        LongFunction[label="LongFunction(73)\n長すぎる関数", fillcolor="pink"];
+        // 2nd P.74
+        LongParameterList[label="Long Parameter List(74)\n長すぎるパラメータリスト(78)", fillcolor="orange"];
+        GlobalData[label="Global Data(74)\nグローバルデータ", fillcolor="pink"];
+        // 2nd P.75
+        MutableData[label="Mutable Data(75)\nミュータブルデータ", fillcolor="pink"];
+        // 2nd P.76
+        DivergentChange[label="Divergent Change(76)\n変更の偏り(79)", fillcolor="orange"];
+        ShotgunSurgery[label="Shotgun Surgery(76)\n変更の分散(80)", fillcolor="orange"];
+        // 2nd P.77
+        FeatureEnvy[label="Feature Envy(77)\n特性の横恋慕(80)", fillcolor="orange"];
+        // 2nd P.78
+        DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="orange"];
+        PrimitiveObsession[label="Primitive Obsession(78)\n基本データ型への執着", fillcolor="orange"];
+        // 2nd P.79
+        RepeatedSwitches[label="Repeated Switches(79)\n繰り返されたスイッチ", fillcolor="pink"];
+        Loops[label="Loops(79)\nループ", fillcolor="pink"];
+        // 2nd P.80
+        LazyElement[label="Lazy Element(80)\n怠け者エレメント", fillcolor="pink"];
+        SpeculativeGenerality[label="Speculative Generality(80)\n疑わしき一般化(83)", fillcolor="orange"];
+        TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="orange"];
+        // 2nd P.81
+        MessageChains[label="Message Chains(81)\nメッセージの連鎖(84)", fillcolor="orange"];
+        MiddleMan[label="Middle Man(81)\n仲介人(85)", fillcolor="orange"];
+        // 2nd P.82
+        InsiderTrading[label="Insider Trading(82)\nインサイダー取引", fillcolor="pink"];
+        LargeClass[label="Large Class(82)\巨大なクラス(78)", fillcolor="orange"];
+        // 2nd P.83
+        AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="orange"];
+        DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="orange"];
+        RefusedBequest[label="Refused Bequest(83)\n相続拒否(87)", fillcolor="orange"];
+        // 2nd P.84
+        Comments[label="Comments(84)\nコメント(87)", fillcolor="orange"];
+    }
 
-    // 2nd Bad Smell
-    // 2nd P.83
-    AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="pink"];
-    // 2nd P.87
-    Comments[label="Comments(84)\nコメント(87)", fillcolor="pink"];
-    // 2nd P.86
-    DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="pink"];
-    DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="pink"];
-    DivergentChange[label="Divergent Change(76)"];
-    DuplicatedCode[label="Duplicated Code(72)"];
-    FeatureEnvy;
-    GlobalData;
-    InsiderTrading;
-    LargeClass;
-    LazyElement;
-    LongFunction;
-    LongParameterList;
-    Loops[label="Loops(79)"];
-    MessageChains;
-    MiddleMan;
-    MutableData;
-    MysteriousName;
-    PrimitiveObsession;
-    RefusedBequest;
-    RepeatedSwitches;
-    ShotgunSurgery;
-    SpeculativeGenerality;
-    TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="pink"];
-
-    // 2nd Chapter 6 : A First Set of Refactorings
-    subgraph cluster_2_6 {
-        label="2nd Chapter 6";
+    subgraph cluster_2ndCatalog {
+        label="2nd Edition Refactoring Catalog";
+        // 2nd Chapter 6 : A First Set of Refactorings
         // 2nd P.106
-        ExtractFunction [label="Extract Function(106)\n関数の抽出", fillcolor="skyblue", pos="0,-1!"];
+        ExtractFunction [label="Extract Function(106)\n関数の抽出", fillcolor="skyblue"];
         // 2nd P.115
-        InlineFunction [label="Inline Function(115)\n関数のインライン化", fillcolor="skyblue", pos="0,-2!"];
+        InlineFunction [label="Inline Function(115)\n関数のインライン化", fillcolor="skyblue"];
         // 2nd P.119
-        ExtractVariable [label="Extract Variable(119)\n変数の抽出", fillcolor="skyblue", pos="0,-3!"];
+        ExtractVariable [label="Extract Variable(119)\n変数の抽出", fillcolor="skyblue"];
         // 2nd P.123
-        InlineVariable [label="Inline Variable(123)\n変数のインライン化", fillcolor="skyblue", pos="0,-4!"];
+        InlineVariable [label="Inline Variable(123)\n変数のインライン化", fillcolor="skyblue"];
         // 2nd P.124
-        ChangeFunctionDeclaration [label="Change Function Declaration(124)\n関数宣言の変更", URL="https://refactoring.com/catalog/changeFunctionDeclaration.html", fillcolor="skyblue", pos="0,-5!"];
-        RenameFunction [label="Rename Function\n関数名の変更", fillcolor="cyan", pos="3,-5!"];
-        ChangeSignature [label="Change Signature\nシグネチャーの変更", fillcolor="cyan", pos="3,-6!"];
+        ChangeFunctionDeclaration [label="Change Function Declaration(124)\n関数宣言の変更", URL="https://refactoring.com/catalog/changeFunctionDeclaration.html", fillcolor="skyblue"];
+        RenameFunction [label="Rename Function\n関数名の変更", fillcolor="cyan"];
+        ChangeSignature [label="Change Signature\nシグネチャーの変更", fillcolor="cyan"];
         // 2nd P.132
-        EncapsulateVariable [label="Encapsulate Variable(132)\n変数のカプセル化", fillcolor="skyblue", pos="0,-6!"];
+        EncapsulateVariable [label="Encapsulate Variable(132)\n変数のカプセル化", fillcolor="skyblue"];
         // 2nd P.137
-        RenameVariable [label="Rename Variable(137)\n変数名の変更", fillcolor="skyblue", pos="0,-7!"];
+        RenameVariable [label="Rename Variable(137)\n変数名の変更", fillcolor="skyblue"];
         // 2nd P.140
-        IntroduceParameterObject [label="Introduce Parameter Object(140)\nパラメータオブジェクトの導入(295)", fillcolor="yellow", pos="0,-8!"];
+        IntroduceParameterObject [label="Introduce Parameter Object(140)\nパラメータオブジェクトの導入(295)", fillcolor="yellow"];
         // 2nd P.144
-        CombineFunctionsintoClass [label="Combine Functions into Class(144)\nクラスへ関数の結合", fillcolor="skyblue", pos="0,-9!"];
+        CombineFunctionsintoClass [label="Combine Functions into Class(144)\nクラスへ関数の結合", fillcolor="skyblue"];
         // 2nd P.149
-        CombineFunctionsintoTransform [label="Combine Functions into Transform(149)\n変換へ関数の結合", fillcolor="skyblue", pos="0,-10!"];
+        CombineFunctionsintoTransform [label="Combine Functions into Transform(149)\n変換へ関数の結合", fillcolor="skyblue"];
         // 2nd P.154
-        SplitPhase [label="Split Phase(154)\nフェーズの分離", fillcolor="skyblue", pos="0,-11!"];
-    }
+        SplitPhase [label="Split Phase(154)\nフェーズの分離", fillcolor="skyblue"];
 
-    // 2nd Chapter 7 : Encapsulation
-    subgraph cluster_2_7 {
-        label="2nd Chapter 7";
+        // 2nd Chapter 7 : Encapsulation
         // 2nd P.162
-        EncapsulateRecord [label="Encapsulate Record(162)\nレコードのカプセル化", fillcolor="skyblue", pos="0,-1!"];
+        EncapsulateRecord [label="Encapsulate Record(162)\nレコードのカプセル化", fillcolor="skyblue"];
         // 2nd P.170
-        EncapsulateCollection [label="EncapsulateCollection(170)\nコレクションのカプセル化(208)", fillcolor="yellow", pos="0,-2!"];
+        EncapsulateCollection [label="EncapsulateCollection(170)\nコレクションのカプセル化(208)", fillcolor="yellow"];
         // 2nd P.174
-        ReplacePrimitivewithObject [label="Replace Primitive with Object(174)\nオブジェクトによるプリミティブ値の置き換え", fillcolor="skyblue", pos="0,-3!"];
+        ReplacePrimitivewithObject [label="Replace Primitive with Object(174)\nオブジェクトによるプリミティブ値の置き換え", fillcolor="skyblue"];
         // 2nd P.178
-        ReplaceTempwithQuery [label="Replace Temp with Query(178)\n問い合せによる一時変数の置き換え(120)", fillcolor="yellow", pos="0,-4!"];
+        ReplaceTempwithQuery [label="Replace Temp with Query(178)\n問い合せによる一時変数の置き換え(120)", fillcolor="yellow"];
         // 2nd P.182
-        ExtractClass [label="Extract Class(182)\nクラスの抽出(149)", fillcolor="yellow", pos="0,-5!"];
+        ExtractClass [label="Extract Class(182)\nクラスの抽出(149)", fillcolor="yellow"];
         // 2nd P.186
-        InlineClass [label="Inline Class(186)\nクラスのインライン化(154)", fillcolor="yellow", pos="0,-6!"];
+        InlineClass [label="Inline Class(186)\nクラスのインライン化(154)", fillcolor="yellow"];
         // 2nd P.189
-        HideDelegate [label="Hide Delegate(189)\n委譲の隠蔽(157)", fillcolor="yellow", pos="0,-7!"];
+        HideDelegate [label="Hide Delegate(189)\n委譲の隠蔽(157)", fillcolor="yellow"];
         // 2nd P.192
-        RemoveMiddleMan [label="Remove Middle Man(192)\n仲介人の除去(160)", fillcolor="yellow", pos="0,-8!"];
+        RemoveMiddleMan [label="Remove Middle Man(192)\n仲介人の除去(160)", fillcolor="yellow"];
         // 2nd P.195
-        SubstituteAlgorithm [label="Substitute Algorithm(195)\nアルゴリズムの取り替え", fillcolor="yellow", pos="0,-9!"];
-    }
+        SubstituteAlgorithm [label="Substitute Algorithm(195)\nアルゴリズムの取り替え", fillcolor="yellow"];
 
-    // 2nd Chapter 8 : Moving Features
-    subgraph cluster_2_8 {
-        label="2nd Chapter 8";
+        // 2nd Chapter 8 : Moving Features
         // 2nd P.198
-        MoveFunction [label="Move Function(198)\n関数の移動", fillcolor="skyblue", pos="0,-1!"];
+        MoveFunction [label="Move Function(198)\n関数の移動", fillcolor="skyblue"];
         // 2nd P.207
-        MoveField [label="Move Field(207)\nフィールドの移動(146)", fillcolor="yellow", pos="0,-2!"];
+        MoveField [label="Move Field(207)\nフィールドの移動(146)", fillcolor="yellow"];
         // 2nd P.213
-        MoveStatementsintoFunction [label="Move Statements into Function(213)\n 関数へステートメントの移動", fillcolor="skyblue", pos="0,-3!"];
+        MoveStatementsintoFunction [label="Move Statements into Function(213)\n 関数へステートメントの移動", fillcolor="skyblue"];
         MoveStatementsintoFunction -> MoveStatementstoCallers [label="inverse of", color="blue"];
         // 2nd P.217
-        MoveStatementstoCallers [label="Move Statements to Callers(217)\n呼び出し元へステートメントの移動", fillcolor="skyblue", pos="0,-4!"];
+        MoveStatementstoCallers [label="Move Statements to Callers(217)\n呼び出し元へステートメントの移動", fillcolor="skyblue"];
         MoveStatementstoCallers -> MoveStatementsintoFunction [label="inverse of", color="blue"];
         // 2nd P.222
-        ReplaceInlineCodewithFunctionCall [label="Replace Inline Code with Function Call(222)\n関数呼び出しによるインラインコードの置き換え", fillcolor="skyblue", pos="0,-5!"];
+        ReplaceInlineCodewithFunctionCall [label="Replace Inline Code with Function Call(222)\n関数呼び出しによるインラインコードの置き換え", fillcolor="skyblue"];
         // 2nd P.223
-        SlideStatements [label="Slide Statements(223)\nステートメントのスライド", fillcolor="skyblue", pos="0,-6!"];
+        SlideStatements [label="Slide Statements(223)\nステートメントのスライド", fillcolor="skyblue"];
         // 2nd P.227
-        SplitLoop [label="Split Loop(227)\nループの分離", fillcolor="skyblue", pos="0,-7!"];
+        SplitLoop [label="Split Loop(227)\nループの分離", fillcolor="skyblue"];
         // 2nd P.231
-        ReplaceLoopwithPipeline [label="Replace Loop with Pipeline(231)\nパイプラインによるループの置き換え", fillcolor="skyblue", pos="0,-8!"];
+        ReplaceLoopwithPipeline [label="Replace Loop with Pipeline(231)\nパイプラインによるループの置き換え", fillcolor="skyblue"];
         // 2nd P.237
-        RemoveDeadCode [label="Remove Dead Code(237)\nデッドコードの削除", fillcolor="skyblue", pos="0,-9!"];
-    }
+        RemoveDeadCode [label="Remove Dead Code(237)\nデッドコードの削除", fillcolor="skyblue"];
 
-    // 2nd Chapter 9 : Organizing Data
-    subgraph cluster_2_9 {
-        label="2nd Chapter 9";
+        // 2nd Chapter 9 : Organizing Data
         // 2nd P.240
-        SplitVariable [label="Split Variable(240)\n変数の分離", fillcolor="skyblue", pos="0,-1!"];
+        SplitVariable [label="Split Variable(240)\n変数の分離", fillcolor="skyblue"];
         // 2nd P.244
-        RenameField [label="Rename Field(244)\nフィールドの削除", fillcolor="skyblue", pos="0,-2!"];
+        RenameField [label="Rename Field(244)\nフィールドの削除", fillcolor="skyblue"];
         // 2nd P.248
-        ReplaceDerivedVariablewithQuery [label="Replace Derived Variable with Query(248)\n問い合せによる派生変数の置き換え", fillcolor="skyblue", pos="0,-3!"];
+        ReplaceDerivedVariablewithQuery [label="Replace Derived Variable with Query(248)\n問い合せによる派生変数の置き換え", fillcolor="skyblue"];
         // 2nd P.252
-        ChangeReferencetoValue [label="Change Reference to Value(252)\n参照から値への変更(183)", fillcolor="yellow", pos="0,-4!"];
+        ChangeReferencetoValue [label="Change Reference to Value(252)\n参照から値への変更(183)", fillcolor="yellow"];
         ChangeReferencetoValue -> ChangeValuetoReference [label="inverse of", color="blue"];
         // 2nd P.256
-        ChangeValuetoReference [label="Change Value to Reference(256)\n値から参照への変更(179)", fillcolor="yellow", pos="0,-5!"];
+        ChangeValuetoReference [label="Change Value to Reference(256)\n値から参照への変更(179)", fillcolor="yellow"];
         ChangeValuetoReference -> ChangeReferencetoValue [label="inverse of", color="blue"];
-    }
 
-    // 2nd Chapter 10 : Simplifying Conditional Logic
-    subgraph cluster_2_10 {
-        label="2nd Chapter 10";
+        // 2nd Chapter 10 : Simplifying Conditional Logic
         // 2nd P.260
-        DecomposeConditional [label="Decompose Conditional(260)\n条件記述の分解(238)", fillcolor="yellow", pos="0,-1!"];
+        DecomposeConditional [label="Decompose Conditional(260)\n条件記述の分解(238)", fillcolor="yellow"];
         // 2nd P.263
-        ConsolidateConditionalExpression [label="Consolidate Conditional Expression(263)\n条件記述の統合(240)", fillcolor="yellow", pos="0,-2!"];
+        ConsolidateConditionalExpression [label="Consolidate Conditional Expression(263)\n条件記述の統合(240)", fillcolor="yellow"];
         // 2nd P.266
-        ReplaceNestedConditionalwithGuardClauses [label="Replace Nested Conditional with Guard Clauses(266)\nガード節による入れ子条件記述の置き換え(250)", fillcolor="yellow", pos="0,-3!"];
+        ReplaceNestedConditionalwithGuardClauses [label="Replace Nested Conditional with Guard Clauses(266)\nガード節による入れ子条件記述の置き換え(250)", fillcolor="yellow"];
         // 2nd P.272
-        ReplaceConditionalwithPolymorphism [label="Replace Conditional with Polymorphism(272)\nポリモーフィズムによる条件記述の置き換え(255)", fillcolor="yellow", pos="0,-4!"];
+        ReplaceConditionalwithPolymorphism [label="Replace Conditional with Polymorphism(272)\nポリモーフィズムによる条件記述の置き換え(255)", fillcolor="yellow"];
         // 2nd P.289
-        IntroduceSpecialCase [label="Introduce Special Case(289)\n特殊ケースの導入", fillcolor="skyblue", pos="0,-5!"];
+        IntroduceSpecialCase [label="Introduce Special Case(289)\n特殊ケースの導入", fillcolor="skyblue"];
         // 2nd P.302
-        IntroduceAssertion [label="Introduce Assertion(302)\n表明の導入(267)", fillcolor="yellow", pos="0,-6!"];
-    }
+        IntroduceAssertion [label="Introduce Assertion(302)\n表明の導入(267)", fillcolor="yellow"];
 
-    // 2nd Chapter 11 : Refactoring APIs
-    subgraph cluster_2_11 {
-        label="2nd Chapter 11";
+        // 2nd Chapter 11 : Refactoring APIs
         // 2nd P.306
         SeparateQueryfromModifier [label="Separate Query from Modifier(306)\n問い合せと更新の分離(279)", fillcolor="yellow"];
         // 2nd P.310
@@ -357,11 +393,8 @@ digraph Refactoring2ndEdition {
         ReplaceFunctionwithCommand [label="Replace Function with Command(337)\nコマンドによる関数の置き換え", fillcolor="skyblue"];
         // 2nd P.344
         ReplaceCommandwithFunction [label="Replace Command with Function(344)\n関数によるコマンドの置き換え", fillcolor="skyblue"];
-    }
 
-    // 2nd Chapter 12 : Dealing with Inheritance
-    subgraph cluster_2_12 {
-        label="2nd Chapter 12";
+        // 2nd Chapter 12 : Dealing with Inheritance
         // 2nd P.350
         PullUpMethod [label="Pull Up Method(350)\nメソッドの引き上げ(322)", fillcolor="yellow"];
         // 2nd P.353
@@ -384,9 +417,7 @@ digraph Refactoring2ndEdition {
         ReplaceSubclasswithDelegate [label="Replace Subclass with Delegate(381)\n委譲によるサブクラスの置き換え", fillcolor="skyblue"];
         // 2nd P.399
         ReplaceSuperclasswithDelegate [label="Replace Superclass with Delegate(399)\n委譲によるスーパークラスの置き換え", fillcolor="skyblue"];
-    }
-
-    }   // 2nd end
+    }   // 2nd Refactoring Catalog end
 
     // 関連
 
@@ -394,71 +425,139 @@ digraph Refactoring2ndEdition {
     AlternativeClasswithDifferentInterfaces -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
     AlternativeClasswithDifferentInterfaces -> MoveFunction[label="refactoring", color="darkgreen"];
     AlternativeClasswithDifferentInterfaces -> ExtractSuperclass[label="refactoring", color="darkgreen"];
-    DataClass -> EncapsulateRecord;
-    DataClass -> RemoveSettingMethod;
-    DataClass -> MoveFunction;
-    DataClass -> ExtractFunction;
-    DataClass -> SplitPhase;
+    DataClass -> EncapsulateRecord[label="refactoring", color="darkgreen"];
+    DataClass -> RemoveSettingMethod[label="refactoring", color="darkgreen"];
+    DataClass -> MoveFunction[label="refactoring", color="darkgreen"];
+    DataClass -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DataClass -> SplitPhase[label="refactoring", color="darkgreen"];
 
     // 2nd P.84
     Comments -> ExtractFunction[label="refactoring", color="darkgreen"];
-    Comments -> ChangeFunctionDeclaration;
-    Comments -> IntroduceAssertion;
+    Comments -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    Comments -> IntroduceAssertion[label="refactoring", color="darkgreen"];
 
     // 2nd P.78
-    DataClumps -> ExtractClass;
-    DataClumps -> IntroduceParameterObject;
-    DataClumps -> PreserveWholeObject;
+    DataClumps -> ExtractClass[label="refactoring", color="darkgreen"];
+    DataClumps -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    DataClumps -> PreserveWholeObject[label="refactoring", color="darkgreen"];
 
     // 2nd P.76
-    DivergentChange -> SplitPhase;
-    DivergentChange -> MoveFunction;
-    DivergentChange -> ExtractFunction;
-    DivergentChange -> ExtractClass;
+    DivergentChange -> SplitPhase[label="refactoring", color="darkgreen"];
+    DivergentChange -> MoveFunction[label="refactoring", color="darkgreen"];
+    DivergentChange -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DivergentChange -> ExtractClass[label="refactoring", color="darkgreen"];
 
     // 2nd P.72
-    DuplicatedCode -> ExtractFunction;
-    DuplicatedCode -> SlideStatements;
-    DuplicatedCode -> PullUpMethod;
+    DuplicatedCode -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DuplicatedCode -> SlideStatements[label="refactoring", color="darkgreen"];
+    DuplicatedCode -> PullUpMethod[label="refactoring", color="darkgreen"];
 
     // 2nd P.77
-    FeatureEnvy -> MoveFunction;
-    FeatureEnvy -> ExtractFunction;
+    FeatureEnvy -> MoveFunction[label="refactoring", color="darkgreen"];
+    FeatureEnvy -> ExtractFunction[label="refactoring", color="darkgreen"];
 
     // 2nd P.74
-    GlobalData -> EncapsulateVariable;
+    GlobalData -> EncapsulateVariable[label="refactoring", color="darkgreen"];
 
     // 2nd P.82
-    InsiderTrading -> MoveFunction;
-    InsiderTrading -> MoveField;
-    InsiderTrading -> HideDelegate;
-    InsiderTrading -> ReplaceSubclasswithDelegate;
-    InsiderTrading -> ReplaceSuperclasswithDelegate;
+    InsiderTrading -> MoveFunction[label="refactoring", color="darkgreen"];
+    InsiderTrading -> MoveField[label="refactoring", color="darkgreen"];
+    InsiderTrading -> HideDelegate[label="refactoring", color="darkgreen"];
+    InsiderTrading -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+    InsiderTrading -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
 
     // 2nd P.82
-    LargeClass -> ExtractClass;
-    LargeClass -> ExtractSuperclass;
-    LargeClass -> ReplaceTypeCodewithSubclasses;
+    LargeClass -> ExtractClass[label="refactoring", color="darkgreen"];
+    LargeClass -> ExtractSuperclass[label="refactoring", color="darkgreen"];
+    LargeClass -> ReplaceTypeCodewithSubclasses[label="refactoring", color="darkgreen"];
 
     // 2nd P.80
-    LazyElement -> InlineFunction;
-    LazyElement -> InlineClass;
-    LazyElement -> CollapseHierarchy;
+    LazyElement -> InlineFunction[label="refactoring", color="darkgreen"];
+    LazyElement -> InlineClass[label="refactoring", color="darkgreen"];
+    LazyElement -> CollapseHierarchy[label="refactoring", color="darkgreen"];
 
     // 2nd P.73
-    LongFunction -> ExtractFunction;
-    LongFunction -> ReplaceTempwithQuery;
-    LongFunction -> IntroduceParameterObject;
-    LongFunction -> PreserveWholeObject;
-    LongFunction -> ReplaceFunctionwithCommand;
-    LongFunction -> DecomposeConditional;
-    LongFunction -> ReplaceConditionalwithPolymorphism;
-    LongFunction -> SplitLoop;
+    LongFunction -> ExtractFunction[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceTempwithQuery[label="refactoring", color="darkgreen"];
+    LongFunction -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    LongFunction -> PreserveWholeObject[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceFunctionwithCommand[label="refactoring", color="darkgreen"];
+    LongFunction -> DecomposeConditional[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+    LongFunction -> SplitLoop[label="refactoring", color="darkgreen"];
 
-    //
-    
+    // 2nd P.74
+    LongParameterList -> ReplaceParameterwithQuery[label="refactoring", color="darkgreen"];
+    LongParameterList -> PreserveWholeObject[label="refactoring", color="darkgreen"];
+    LongParameterList -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    LongParameterList -> RemoveFlagArgument[label="refactoring", color="darkgreen"];
+    LongParameterList -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+
+    // 2nd P.79
+    Loops -> ReplaceLoopwithPipeline[label="refactoring", color="darkgreen"];
+
+    // 2nd P.81
+    MessageChains -> HideDelegate[label="refactoring", color="darkgreen"];
+    MessageChains -> ExtractFunction[label="refactoring", color="darkgreen"];
+    MessageChains -> MoveFunction[label="refactoring", color="darkgreen"];
+
+    // 2nd P.81
+    MiddleMan -> RemoveMiddleMan[label="refactoring", color="darkgreen"];
+    MiddleMan -> InlineFunction[label="refactoring", color="darkgreen"];
+    MiddleMan -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
+    MiddleMan -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+
+    // 2nd P.75
+    MutableData -> EncapsulateVariable[label="refactoring", color="darkgreen"];
+    MutableData -> SplitVariable[label="refactoring", color="darkgreen"];
+    MutableData -> SlideStatements[label="refactoring", color="darkgreen"];
+    MutableData -> ExtractFunction[label="refactoring", color="darkgreen"];
+    MutableData -> SeparateQueryfromModifier[label="refactoring", color="darkgreen"];
+    MutableData -> RemoveSettingMethod[label="refactoring", color="darkgreen"];
+    MutableData -> ReplaceDerivedVariablewithQuery[label="refactoring", color="darkgreen"];
+    MutableData -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+    MutableData -> CombineFunctionsintoTransform[label="refactoring", color="darkgreen"];
+    MutableData -> ChangeReferencetoValue[label="refactoring", color="darkgreen"];
+
+    // 2nd P.72
+    MysteriousName -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    MysteriousName -> RenameVariable[label="refactoring", color="darkgreen"];
+    MysteriousName -> RenameField[label="refactoring", color="darkgreen"];
+
+    // 2nd P.78
+    PrimitiveObsession -> ReplacePrimitivewithObject[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ReplaceTypeCodewithSubclasses[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ExtractClass[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+
+    // 2nd P.83
+    RefusedBequest -> PushDownMethod[label="refactoring", color="darkgreen"];
+    RefusedBequest -> PushDownField[label="refactoring", color="darkgreen"];
+    RefusedBequest -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+    RefusedBequest -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
+
+    // 2nd P.79
+    RepeatedSwitches -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+
+    // 2nd P.76
+    ShotgunSurgery -> MoveFunction[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> MoveField[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> CombineFunctionsintoTransform[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> SplitPhase[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> InlineFunction[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> InlineClass[label="refactoring", color="darkgreen"];
+
     // 2nd P.80
-    TemporaryField -> ExtractClass [label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> CollapseHierarchy[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> InlineFunction[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> InlineClass[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> RemoveDeadCode[label="refactoring", color="darkgreen"];
+
+    // 2nd P.80
+    TemporaryField -> ExtractClass [label="refactoring", color="darkgreen"]
     TemporaryField -> MoveFunction [label="refactoring", color="darkgreen"];
     TemporaryField -> IntroduceSpecialCase [label="refactoring", color="darkgreen"];
 
@@ -536,5 +635,4 @@ digraph Refactoring2ndEdition {
     RemoveSubclass -> ReplaceTypeCodewithSubclasses [label="inverse of", color="blue"];
     // 2nd P.399
     ReplaceSuperclasswithDelegate -> ReplaceInheritancewithDelegation [label="formerly", color="gray"];
-
 }
