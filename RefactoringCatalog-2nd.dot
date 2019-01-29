@@ -133,7 +133,7 @@ digraph Refactoring2ndEdition {
         // 2nd P.240
         SplitVariable [label="Split Variable(240)\n変数の分離", fillcolor="skyblue"];
         // 2nd P.244
-        RenameField [label="Rename Field(244)\nフィールドの削除", fillcolor="skyblue"];
+        RenameField [label="Rename Field(244)\nフィールド名の変更", fillcolor="skyblue"];
         // 2nd P.248
         ReplaceDerivedVariablewithQuery [label="Replace Derived Variable with Query(248)\n問い合せによる派生変数の置き換え", fillcolor="skyblue"];
         // 2nd P.252
@@ -195,7 +195,7 @@ digraph Refactoring2ndEdition {
         // 2nd P.369
         RemoveSubclass [label="Remove Subclass(369)\nサブクラスの削除", fillcolor="skyblue"];
         // 2nd P.375
-        ExtractSuperclass [label="Extract Superclass(375)\nスーパークラスの抽出", fillcolor="skyblue"];
+        ExtractSuperclass [label="Extract Superclass(375)\nスーパークラスの抽出(336)", fillcolor="skyblue"];
         // 2nd P.380
         CollapseHierarchy [label="Collapse Hierarchy(380)\n階層の平坦化(344)", fillcolor="yellow"];
         // 2nd P.381

@@ -19,6 +19,41 @@ digraph Refactoring2ndEdition {
     subgraph cluster_1 {
         label="1st Edition";
 
+        // 第3章 : コードの不吉な臭い
+        // P.76
+        // DuplicatedCode;
+        LongMethod[label="Long Method\n長すぎるメソッド(76)", fillcolor="lightgrey"];
+        // P.78
+        // LargeClass;
+        // LongParameterList;
+        // P.79
+        // DivergentChange;
+        // P.80
+        // ShotgunSurgery;
+        // FeatureEnvy;
+        // P.81
+        // DataClumps;
+        // PrimitiveObsession;
+        // P.82
+        SwitchStatement[label="Switch Statement\nスイッチ文(82)", fillcolor="lightgrey"];
+        // P.83
+        ParallelInheritanceHierarchies[label="Parallel Inheritance Hierarchies\nパラレル継承(83)", fillcolor="lightgrey"];
+        LazyClass[label="Lazy Class\n怠け者クラス(83)", fillcolor="lightgrey"];
+        // SpeculativeGenerality;
+        //P.84
+        // TemporaryField;
+        // MessageChains;
+        // P.85
+        // MiddleMan;
+        InappropriateIntimacy[label="Inappropriate Intimacy\n不適切な関係(85)", fillcolor="lightgrey"];
+        // AlternativeClasswithDifferentInterfaces;
+        // P.86
+        IncompleteLibraryClass[label="Incomplete Library Class\n未熟なクラスライブラリ(86)", fillcolor="lightgrey"];
+        // DataClass;
+        // P.87
+        // RefusedBequest;
+        // Comments;
+
         // 第6章 : メソッドの構成
         // P.110 replaced -> Extract Function
         ExtractMethod [label="Extract Method\nメソッドの抽出(110)", fillcolor="gray"];
@@ -184,6 +219,11 @@ digraph Refactoring2ndEdition {
     } // 1st end
 
     // 関連
+    LongFunction -> LongMethod[label="formerly", color="grey"];
+    LazyElement -> LazyClass[label="formerly", color="grey"];
+    InsiderTrading -> InappropriateIntimacy[label="formerly", color="grey"];
+    RepeatedSwitches -> SwitchStatement[label="formerly", color="grey"];
+
     ExtractMethod -> InlineMethod [label="inverse of", color="blue"];
     InlineMethod -> ExtractMethod [label="inverse of", color="blue"];
     ReplaceInheritancewithDelegation -> ReplaceDelegationwithInheritance [label="inverse of", color="blue"];
@@ -195,33 +235,43 @@ digraph Refactoring2ndEdition {
         label="2nd Edition";
 
     // 2nd Bad Smell
-    // 2nd P.83
-    AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="pink"];
-    // 2nd P.87
-    Comments[label="Comments(84)\nコメント(87)", fillcolor="pink"];
-    // 2nd P.86
-    DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="pink"];
-    DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="pink"];
-    DivergentChange[label="Divergent Change(76)"];
-    DuplicatedCode[label="Duplicated Code(72)"];
-    FeatureEnvy;
-    GlobalData;
-    InsiderTrading;
-    LargeClass;
-    LazyElement;
-    LongFunction;
-    LongParameterList;
-    Loops[label="Loops(79)"];
-    MessageChains;
-    MiddleMan;
-    MutableData;
-    MysteriousName;
-    PrimitiveObsession;
-    RefusedBequest;
-    RepeatedSwitches;
-    ShotgunSurgery;
-    SpeculativeGenerality;
-    TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="pink"];
+        // 2nd P.72
+        MysteriousName[label="Mysterious Name(72)\nミステリアスな名前", fillcolor="pink"];
+        DuplicatedCode[label="Duplicated Code(72)\n重複したコード(76)", fillcolor="orange"];
+        // 2nd P.73
+        LongFunction[label="LongFunction(73)\n長すぎる関数", fillcolor="pink"];
+        // 2nd P.74
+        LongParameterList[label="Long Parameter List(74)\n長すぎるパラメータリスト(78)", fillcolor="orange"];
+        GlobalData[label="Global Data(74)\nグローバルデータ", fillcolor="pink"];
+        // 2nd P.75
+        MutableData[label="Mutable Data(75)\nミュータブルデータ", fillcolor="pink"];
+        // 2nd P.76
+        DivergentChange[label="Divergent Change(76)\n変更の偏り(79)", fillcolor="orange"];
+        ShotgunSurgery[label="Shotgun Surgery(76)\n変更の分散(80)", fillcolor="orange"];
+        // 2nd P.77
+        FeatureEnvy[label="Feature Envy(77)\n特性の横恋慕(80)", fillcolor="orange"];
+        // 2nd P.78
+        DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="orange"];
+        PrimitiveObsession[label="Primitive Obsession(78)\n基本データ型への執着", fillcolor="orange"];
+        // 2nd P.79
+        RepeatedSwitches[label="Repeated Switches(79)\n繰り返されたスイッチ", fillcolor="pink"];
+        Loops[label="Loops(79)\nループ", fillcolor="pink"];
+        // 2nd P.80
+        LazyElement[label="Lazy Element(80)\n怠け者エレメント", fillcolor="pink"];
+        SpeculativeGenerality[label="Speculative Generality(80)\n疑わしき一般化(83)", fillcolor="orange"];
+        TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="orange"];
+        // 2nd P.81
+        MessageChains[label="Message Chains(81)\nメッセージの連鎖(84)", fillcolor="orange"];
+        MiddleMan[label="Middle Man(81)\n仲介人(85)", fillcolor="orange"];
+        // 2nd P.82
+        InsiderTrading[label="Insider Trading(82)\nインサイダー取引", fillcolor="pink"];
+        LargeClass[label="Large Class(82)\巨大なクラス(78)", fillcolor="orange"];
+        // 2nd P.83
+        AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="orange"];
+        DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="orange"];
+        RefusedBequest[label="Refused Bequest(83)\n相続拒否(87)", fillcolor="orange"];
+        // 2nd P.84
+        Comments[label="Comments(84)\nコメント(87)", fillcolor="orange"];
 
     // 2nd Chapter 6 : A First Set of Refactorings
     subgraph cluster_2_6 {
@@ -306,7 +356,7 @@ digraph Refactoring2ndEdition {
         // 2nd P.240
         SplitVariable [label="Split Variable(240)\n変数の分離", fillcolor="skyblue", pos="0,-1!"];
         // 2nd P.244
-        RenameField [label="Rename Field(244)\nフィールドの削除", fillcolor="skyblue", pos="0,-2!"];
+        RenameField [label="Rename Field(244)\nフィールド名の変更", fillcolor="skyblue", pos="0,-2!"];
         // 2nd P.248
         ReplaceDerivedVariablewithQuery [label="Replace Derived Variable with Query(248)\n問い合せによる派生変数の置き換え", fillcolor="skyblue", pos="0,-3!"];
         // 2nd P.252

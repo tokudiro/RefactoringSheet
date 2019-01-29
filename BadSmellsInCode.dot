@@ -1,0 +1,106 @@
+digraph Refactoring2ndEdition {
+    graph [
+        charset="UTF-8";
+        //layout=neato; overlap = false; splines = true;
+        //layout=circo;
+        layout=fdp;
+        //layout=twopi; overlap = false; splines = true;
+        //layout=dot; rankdir=LR;
+    ];
+
+    node [
+        shape="note",
+        style="filled",
+        fillcolor="red"
+    ];
+
+    /* -------------------- */
+    /* 1st Edition / Japanese */
+    subgraph cluster_1Smell {
+        label="1st Edition Code Smells";
+        // 第3章 : コードの不吉な臭い
+        // P.76
+        // DuplicatedCode;
+        LongMethod[label="Long Method\n長すぎるメソッド(76)", fillcolor="lightgrey"];
+        // P.78
+        // LargeClass;
+        // LongParameterList;
+        // P.79
+        // DivergentChange;
+        // P.80
+        // ShotgunSurgery;
+        // FeatureEnvy;
+        // P.81
+        // DataClumps;
+        // PrimitiveObsession;
+        // P.82
+        SwitchStatement[label="Switch Statement\nスイッチ文(82)", fillcolor="lightgrey"];
+        // P.83
+        ParallelInheritanceHierarchies[label="Parallel Inheritance Hierarchies\nパラレル継承(83)", fillcolor="lightgrey"];
+        LazyClass[label="Lazy Class\n怠け者クラス(83)", fillcolor="lightgrey"];
+        // SpeculativeGenerality;
+        //P.84
+        // TemporaryField;
+        // MessageChains;
+        // P.85
+        // MiddleMan;
+        InappropriateIntimacy[label="Inappropriate Intimacy\n不適切な関係(85)", fillcolor="lightgrey"];
+        // AlternativeClasswithDifferentInterfaces;
+        // P.86
+        IncompleteLibraryClass[label="Incomplete Library Class\n未熟なクラスライブラリ(86)", fillcolor="lightgrey"];
+        // DataClass;
+        // P.87
+        // RefusedBequest;
+        // Comments;
+    }
+
+    LongFunction -> LongMethod[label="formerly", color="grey"];
+    LazyElement -> LazyClass[label="formerly", color="grey"];
+    InsiderTrading -> InappropriateIntimacy[label="formerly", color="grey"];
+    RepeatedSwitches -> SwitchStatement[label="formerly", color="grey"];
+
+    /* -------------------- */
+    /* 2nd Edition */
+    subgraph cluster_2Smell {
+        label="2nd Edition Bad Smells";
+        // 2nd Bad Smell
+        // 2nd P.72
+        MysteriousName[label="Mysterious Name(72)\nミステリアスな名前", fillcolor="pink"];
+        DuplicatedCode[label="Duplicated Code(72)\n重複したコード(76)", fillcolor="orange"];
+        // 2nd P.73
+        LongFunction[label="Long Function(73)\n長すぎる関数", fillcolor="pink"];
+        // 2nd P.74
+        LongParameterList[label="Long Parameter List(74)\n長すぎるパラメータリスト(78)", fillcolor="orange"];
+        GlobalData[label="Global Data(74)\nグローバルデータ", fillcolor="pink"];
+        // 2nd P.75
+        MutableData[label="Mutable Data(75)\nミュータブルデータ", fillcolor="pink"];
+        // 2nd P.76
+        DivergentChange[label="Divergent Change(76)\n変更の偏り(79)", fillcolor="orange"];
+        ShotgunSurgery[label="Shotgun Surgery(76)\n変更の分散(80)", fillcolor="orange"];
+        // 2nd P.77
+        FeatureEnvy[label="Feature Envy(77)\n特性の横恋慕(80)", fillcolor="orange"];
+        // 2nd P.78
+        DataClumps[label="Data Clumps(78)\nデータの群れ(81)", fillcolor="orange"];
+        PrimitiveObsession[label="Primitive Obsession(78)\n基本データ型への執着", fillcolor="orange"];
+        // 2nd P.79
+        RepeatedSwitches[label="Repeated Switches(79)\n繰り返されたスイッチ", fillcolor="pink"];
+        Loops[label="Loops(79)\nループ", fillcolor="pink"];
+        // 2nd P.80
+        LazyElement[label="Lazy Element(80)\n怠け者エレメント", fillcolor="pink"];
+        SpeculativeGenerality[label="Speculative Generality(80)\n疑わしき一般化(83)", fillcolor="orange"];
+        TemporaryField[label="TemporaryField(80)\n一時属性(84)", fillcolor="orange"];
+        // 2nd P.81
+        MessageChains[label="Message Chains(81)\nメッセージの連鎖(84)", fillcolor="orange"];
+        MiddleMan[label="Middle Man(81)\n仲介人(85)", fillcolor="orange"];
+        // 2nd P.82
+        InsiderTrading[label="Insider Trading(82)\nインサイダー取引", fillcolor="pink"];
+        LargeClass[label="Large Class(82)\n巨大なクラス(78)", fillcolor="orange"];
+        // 2nd P.83
+        AlternativeClasswithDifferentInterfaces[label="Alternative Class with Different Interfaces(83)\nクラスのインタフェース不一致(85)" fillcolor="orange"];
+        DataClass[label="Data Class(83)\nデータクラス(86)", fillcolor="orange"];
+        RefusedBequest[label="Refused Bequest(83)\n相続拒否(87)", fillcolor="orange"];
+        // 2nd P.84
+        Comments[label="Comments(84)\nコメント(87)", fillcolor="orange"];
+    }
+
+}
