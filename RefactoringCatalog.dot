@@ -444,71 +444,139 @@ digraph Refactoring2ndEdition {
     AlternativeClasswithDifferentInterfaces -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
     AlternativeClasswithDifferentInterfaces -> MoveFunction[label="refactoring", color="darkgreen"];
     AlternativeClasswithDifferentInterfaces -> ExtractSuperclass[label="refactoring", color="darkgreen"];
-    DataClass -> EncapsulateRecord;
-    DataClass -> RemoveSettingMethod;
-    DataClass -> MoveFunction;
-    DataClass -> ExtractFunction;
-    DataClass -> SplitPhase;
+    DataClass -> EncapsulateRecord[label="refactoring", color="darkgreen"];
+    DataClass -> RemoveSettingMethod[label="refactoring", color="darkgreen"];
+    DataClass -> MoveFunction[label="refactoring", color="darkgreen"];
+    DataClass -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DataClass -> SplitPhase[label="refactoring", color="darkgreen"];
 
     // 2nd P.84
     Comments -> ExtractFunction[label="refactoring", color="darkgreen"];
-    Comments -> ChangeFunctionDeclaration;
-    Comments -> IntroduceAssertion;
+    Comments -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    Comments -> IntroduceAssertion[label="refactoring", color="darkgreen"];
 
     // 2nd P.78
-    DataClumps -> ExtractClass;
-    DataClumps -> IntroduceParameterObject;
-    DataClumps -> PreserveWholeObject;
+    DataClumps -> ExtractClass[label="refactoring", color="darkgreen"];
+    DataClumps -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    DataClumps -> PreserveWholeObject[label="refactoring", color="darkgreen"];
 
     // 2nd P.76
-    DivergentChange -> SplitPhase;
-    DivergentChange -> MoveFunction;
-    DivergentChange -> ExtractFunction;
-    DivergentChange -> ExtractClass;
+    DivergentChange -> SplitPhase[label="refactoring", color="darkgreen"];
+    DivergentChange -> MoveFunction[label="refactoring", color="darkgreen"];
+    DivergentChange -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DivergentChange -> ExtractClass[label="refactoring", color="darkgreen"];
 
     // 2nd P.72
-    DuplicatedCode -> ExtractFunction;
-    DuplicatedCode -> SlideStatements;
-    DuplicatedCode -> PullUpMethod;
+    DuplicatedCode -> ExtractFunction[label="refactoring", color="darkgreen"];
+    DuplicatedCode -> SlideStatements[label="refactoring", color="darkgreen"];
+    DuplicatedCode -> PullUpMethod[label="refactoring", color="darkgreen"];
 
     // 2nd P.77
-    FeatureEnvy -> MoveFunction;
-    FeatureEnvy -> ExtractFunction;
+    FeatureEnvy -> MoveFunction[label="refactoring", color="darkgreen"];
+    FeatureEnvy -> ExtractFunction[label="refactoring", color="darkgreen"];
 
     // 2nd P.74
-    GlobalData -> EncapsulateVariable;
+    GlobalData -> EncapsulateVariable[label="refactoring", color="darkgreen"];
 
     // 2nd P.82
-    InsiderTrading -> MoveFunction;
-    InsiderTrading -> MoveField;
-    InsiderTrading -> HideDelegate;
-    InsiderTrading -> ReplaceSubclasswithDelegate;
-    InsiderTrading -> ReplaceSuperclasswithDelegate;
+    InsiderTrading -> MoveFunction[label="refactoring", color="darkgreen"];
+    InsiderTrading -> MoveField[label="refactoring", color="darkgreen"];
+    InsiderTrading -> HideDelegate[label="refactoring", color="darkgreen"];
+    InsiderTrading -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+    InsiderTrading -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
 
     // 2nd P.82
-    LargeClass -> ExtractClass;
-    LargeClass -> ExtractSuperclass;
-    LargeClass -> ReplaceTypeCodewithSubclasses;
+    LargeClass -> ExtractClass[label="refactoring", color="darkgreen"];
+    LargeClass -> ExtractSuperclass[label="refactoring", color="darkgreen"];
+    LargeClass -> ReplaceTypeCodewithSubclasses[label="refactoring", color="darkgreen"];
 
     // 2nd P.80
-    LazyElement -> InlineFunction;
-    LazyElement -> InlineClass;
-    LazyElement -> CollapseHierarchy;
+    LazyElement -> InlineFunction[label="refactoring", color="darkgreen"];
+    LazyElement -> InlineClass[label="refactoring", color="darkgreen"];
+    LazyElement -> CollapseHierarchy[label="refactoring", color="darkgreen"];
 
     // 2nd P.73
-    LongFunction -> ExtractFunction;
-    LongFunction -> ReplaceTempwithQuery;
-    LongFunction -> IntroduceParameterObject;
-    LongFunction -> PreserveWholeObject;
-    LongFunction -> ReplaceFunctionwithCommand;
-    LongFunction -> DecomposeConditional;
-    LongFunction -> ReplaceConditionalwithPolymorphism;
-    LongFunction -> SplitLoop;
+    LongFunction -> ExtractFunction[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceTempwithQuery[label="refactoring", color="darkgreen"];
+    LongFunction -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    LongFunction -> PreserveWholeObject[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceFunctionwithCommand[label="refactoring", color="darkgreen"];
+    LongFunction -> DecomposeConditional[label="refactoring", color="darkgreen"];
+    LongFunction -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+    LongFunction -> SplitLoop[label="refactoring", color="darkgreen"];
 
-    //
-    
+    // 2nd P.74
+    LongParameterList -> ReplaceParameterwithQuery[label="refactoring", color="darkgreen"];
+    LongParameterList -> PreserveWholeObject[label="refactoring", color="darkgreen"];
+    LongParameterList -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+    LongParameterList -> RemoveFlagArgument[label="refactoring", color="darkgreen"];
+    LongParameterList -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+
+    // 2nd P.79
+    Loops -> ReplaceLoopwithPipeline[label="refactoring", color="darkgreen"];
+
+    // 2nd P.81
+    MessageChains -> HideDelegate[label="refactoring", color="darkgreen"];
+    MessageChains -> ExtractFunction[label="refactoring", color="darkgreen"];
+    MessageChains -> MoveFunction[label="refactoring", color="darkgreen"];
+
+    // 2nd P.81
+    MiddleMan -> RemoveMiddleMan[label="refactoring", color="darkgreen"];
+    MiddleMan -> InlineFunction[label="refactoring", color="darkgreen"];
+    MiddleMan -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
+    MiddleMan -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+
+    // 2nd P.75
+    MutableData -> EncapsulateVariable[label="refactoring", color="darkgreen"];
+    MutableData -> SplitVariable[label="refactoring", color="darkgreen"];
+    MutableData -> SlideStatements[label="refactoring", color="darkgreen"];
+    MutableData -> ExtractFunction[label="refactoring", color="darkgreen"];
+    MutableData -> SeparateQueryfromModifier[label="refactoring", color="darkgreen"];
+    MutableData -> RemoveSettingMethod[label="refactoring", color="darkgreen"];
+    MutableData -> ReplaceDerivedVariablewithQuery[label="refactoring", color="darkgreen"];
+    MutableData -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+    MutableData -> CombineFunctionsintoTransform[label="refactoring", color="darkgreen"];
+    MutableData -> ChangeReferencetoValue[label="refactoring", color="darkgreen"];
+
+    // 2nd P.72
+    MysteriousName -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    MysteriousName -> RenameVariable[label="refactoring", color="darkgreen"];
+    MysteriousName -> RenameField[label="refactoring", color="darkgreen"];
+
+    // 2nd P.78
+    PrimitiveObsession -> ReplacePrimitivewithObject[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ReplaceTypeCodewithSubclasses[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> ExtractClass[label="refactoring", color="darkgreen"];
+    PrimitiveObsession -> IntroduceParameterObject[label="refactoring", color="darkgreen"];
+
+    // 2nd P.83
+    RefusedBequest -> PushDownMethod[label="refactoring", color="darkgreen"];
+    RefusedBequest -> PushDownField[label="refactoring", color="darkgreen"];
+    RefusedBequest -> ReplaceSubclasswithDelegate[label="refactoring", color="darkgreen"];
+    RefusedBequest -> ReplaceSuperclasswithDelegate[label="refactoring", color="darkgreen"];
+
+    // 2nd P.79
+    RepeatedSwitches -> ReplaceConditionalwithPolymorphism[label="refactoring", color="darkgreen"];
+
+    // 2nd P.76
+    ShotgunSurgery -> MoveFunction[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> MoveField[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> CombineFunctionsintoClass[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> CombineFunctionsintoTransform[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> SplitPhase[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> InlineFunction[label="refactoring", color="darkgreen"];
+    ShotgunSurgery -> InlineClass[label="refactoring", color="darkgreen"];
+
     // 2nd P.80
-    TemporaryField -> ExtractClass [label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> CollapseHierarchy[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> InlineFunction[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> InlineClass[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> ChangeFunctionDeclaration[label="refactoring", color="darkgreen"];
+    SpeculativeGenerality -> RemoveDeadCode[label="refactoring", color="darkgreen"];
+
+    // 2nd P.80
+    TemporaryField -> ExtractClass [label="refactoring", color="darkgreen"]
     TemporaryField -> MoveFunction [label="refactoring", color="darkgreen"];
     TemporaryField -> IntroduceSpecialCase [label="refactoring", color="darkgreen"];
 
